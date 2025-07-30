@@ -12,8 +12,6 @@ a {
     color: white;
 }
 
-/* Colors: #673ab7 #0a0512 */
-
 body {
     position: relative;
     background-color: #0a0512;
@@ -32,6 +30,9 @@ canvas {
     width: 100% !important;
     height: 100% !important;
     pointer-events: none;
+    transition: 0.8s ease;
+    opacity: 0;
+    visibility: hidden;
 }
 
 section {
@@ -92,6 +93,7 @@ section {
     height: calc(100vh - 60px);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 50px;
 }
 
@@ -99,6 +101,43 @@ section {
     font-size: 90px;
     line-height: 1;
 }
+
+.loader-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    z-index: 2;
+    transition: 0.8s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Works for "loader" and "canvas */
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loader-container p {
+    font-size: 20px;
+    color: white;
+    font-weight: 400;
+}
+
+.loader-container .loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#f03355 95%,#0000) 50% 1px/12px 12px no-repeat,
+    radial-gradient(farthest-side,#0000 calc(100% - 14px),#ccc 0);
+  animation: l9 2s infinite linear;
+}
+@keyframes l9 {to{transform: rotate(1turn)}}
 
 .feature {
     display: flex;
